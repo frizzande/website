@@ -14,6 +14,8 @@ title = "frizzande"
 
 googleAnalytics = "UA-PROPERTY_ID"
 
+publishDir = "public"
+
 [Params]
   description = "flowers and sunshine"
 #  images = ['/digital-garden-logo.png']
