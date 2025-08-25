@@ -1,6 +1,5 @@
 ---
-title: "words"
-layout: list
+title: "All Articles"
+type: "section"
 ---
 
-within this part of the website will be, essentially, blog posts - sent to the mailing list initially and then hosted here for posterity

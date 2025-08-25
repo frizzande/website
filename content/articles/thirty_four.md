@@ -1,6 +1,6 @@
 ---
 title: "34 for thirty-four"
-date: "2025-06-26"
+date: "2025-06-30"
 tags: ["birthday"]
 categories: [""]
 author: "ande"
@@ -127,12 +127,12 @@ Dried meat that's been hanging from a hook and left in the sun for too long.
 
 ## Mileage
 
-This year I did way more running in the leadup.
+This year I did way more running in the lead up.
 
 A massive shoutout to the Jungle Botany Run Club.
 Every Saturday morning from 06,00.
 Getting after it, together.
-Appreciate you and the comradery.
+Appreciate you and the camaraderie.
 A regular 5km deposit into the odometer for the 2 months leading up.
 
 I ran 21km two weeks before the race was scheduled.

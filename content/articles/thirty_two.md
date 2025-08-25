@@ -1,5 +1,5 @@
 ---
-title: "thirty two"
+title: "thirty-two"
 date: "2023-07-09"
 tags: ["birthday"]
 categories: ["letters"]

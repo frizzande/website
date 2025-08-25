@@ -23,7 +23,7 @@ publishDir = "public"
 
 [Params.newsletter]
   provider = "buttondown"
-  path = "frizzande"
+  path = "frizz.ande"
   title = ""
   description = "thoughts in words"
 
@@ -95,6 +95,9 @@ publishDir = "public"
     # Enable to include inline HTML
     unsafe = true
 
+[markup.goldmark.parser]
+  [markup.goldmark.parser.attribute]
+    math = true
 
 [author]
   name = "Varun A P"
