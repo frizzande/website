@@ -11,6 +11,7 @@ min_version = "0.121.1"
 baseurl = "https://frizzande.io/"
 languageCode = "en-au"
 title = "frizzande"
+timeZone = "Australia/Sydney"
 
 googleAnalytics = "UA-PROPERTY_ID"
 

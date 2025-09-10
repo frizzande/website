@@ -3,31 +3,25 @@
 # ----------------------------------------------------------------------------
 # news.sh
 #
-#  - Uses Hugo's archetype template at archetypes/blog.md
-#  - Calculates days since 1991-06-26 for the title
-#  - Inserts today's date in YYYY-MM-DD
-#  - Writes a new file content/blog/<days>.md and opens it in vim
-# -----------------------------------------------------------------------------
+# - Creates a new blog post using archetypes/blog.md
+# - Title is the number of days since 1991-06-26
+# - Date is today's date (YYYY-MM-DD)
+# - Sets draft: true by default if missing
+# - Sets publishDate to today (appears directly below date)
+# - Saves to content/blog/<days>.md and opens it in Vim
+# ----------------------------------------------------------------------------
 
-# 1) Where am I? (this script’s folder)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# 2) Repo root = two levels up from content/blog/
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-# 3) Base date & today
 BASE_DATE="1991-06-26"
 TODAY=$(date +%Y-%m-%d)
-
-# 4) Compute days since BASE_DATE
 DAYS_SINCE=$(( ( $(date -d "$TODAY" +%s) - $(date -d "$BASE_DATE" +%s) ) / 86400 ))
 
-# 5) Paths
 TEMPLATE_PATH="$REPO_ROOT/archetypes/blog.md"
 OUTPUT_DIR="$REPO_ROOT/content/blog"
 OUTPUT_FILE="$OUTPUT_DIR/${DAYS_SINCE}.md"
 
-# 6) Sanity checks
 if [ ! -f "$TEMPLATE_PATH" ]; then
   echo "Error: archetype template not found at $TEMPLATE_PATH"
   exit 1
@@ -40,100 +34,43 @@ if [ -f "$OUTPUT_FILE" ]; then
   exit 1
 fi
 
-# 7) Generate the new post from the archetype
-sed \
-  -e "s/{{\s*title\s*}}/$DAYS_SINCE/" \
-  -e "s/{{\s*date\s*}}/$TODAY/" \
-  "$TEMPLATE_PATH" > "$OUTPUT_FILE"
+# ----------------------------
+# Generate new post with draft and publishDate inside front matter
+# ----------------------------
+awk -v title="$DAYS_SINCE" -v date="$TODAY" '
+  BEGIN { in_header=0; has_draft=0 }
+  /^---/ {
+    if (in_header==0) {
+      in_header=1
+      print
+      next
+    } else {
+      # End of front matter: add draft if missing
+      if (!has_draft) print "draft: true"
+      print "---"
+      in_header=0
+      next
+    }
+  }
+  {
+    # Replace placeholders in template
+    gsub(/\{\{\s*title\s*\}\}/, title)
+    gsub(/\{\{\s*date\s*\}\}/, date)
 
-# 8) Open in your editor
-vim "$OUTPUT_FILE"
+    # After the date line, insert publishDate
+    if ($0 ~ /^date:/) {
+      print
+      print "publishDate: " date
+      next
+    }
 
-st.sh
-#
-#  - Uses Hugo's archetype template at archetypes/blog.md
-#  - Calculates days since 1991-06-26 for the title
-#  - Inserts today's date in YYYY-MM-DD
-#  - Writes a new file content/blog/<days>.md and opens it in vim
-# -----------------------------------------------------------------------------
+    # Detect if draft line exists
+    if ($0 ~ /^draft:/) has_draft=1
 
-# 1) Where am I? (this script’s folder)
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    print
+  }
+' "$TEMPLATE_PATH" > "$OUTPUT_FILE"
 
-# 2) Repo root = two levels up from content/blog/
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-
-# 3) Base date & today
-BASE_DATE="1991-06-26"
-TODAY=$(date +%Y-%m-%d)
-
-# 4) Compute days since BASE_DATE
-DAYS_SINCE=$(( ( $(date -d "$TODAY" +%s) - $(date -d "$BASE_DATE" +%s) ) / 86400 ))
-
-# 5) Paths
-TEMPLATE_PATH="$REPO_ROOT/archetypes/blog.md"
-OUTPUT_DIR="$REPO_ROOT/content/blog"
-OUTPUT_FILE="$OUTPUT_DIR/${DAYS_SINCE}.md"
-
-# 6) Sanity checks
-if [ ! -f "$TEMPLATE_PATH" ]; then
-	  echo "Error: archetype template not found at $TEMPLATE_PATH"
-	    exit 1
-fi
-
-mkdir -p "$OUTPUT_DIR"
-
-if [ -f "$OUTPUT_FILE" ]; then
-	  echo "Error: $OUTPUT_FILE already exists."
-	    exit 1
-fi
-
-# 7) Generate the new post from the archetype
-sed \
-	  -e "s/{{\s*title\s*}}/$DAYS_SINCE/" \
-	    -e "s/{{\s*date\s*}}/$TODAY/" \
-	      "$TEMPLATE_PATH" > "$OUTPUT_FILE"
-
-# 8) Open in your editor
-vim "$OUTPUT_FILE"
-
-
-# 1) Figure out where this script lives
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# 2) Base date & today
-BASE_DATE="1991-06-26"
-TODAY=$(date +%Y-%m-%d)
-
-# 3) Compute days since base date
-DAYS_SINCE=$(( ( $(date -d "$TODAY" +%s) - $(date -d "$BASE_DATE" +%s) ) / 86400 ))
-
-# 4) Paths
-TEMPLATE_PATH="$SCRIPT_DIR/archetypes/blog.md"
-OUTPUT_DIR="$SCRIPT_DIR"
-OUTPUT_FILE="$OUTPUT_DIR/${DAYS_SINCE}.md"
-
-# 5) Make sure the template exists
-if [ ! -f "$TEMPLATE_PATH" ]; then
-	  echo "Template not found at $TEMPLATE_PATH"
-	    exit 1
-fi
-
-# 6) Ensure output directory exists (it does, since script lives there)
-# mkdir -p "$OUTPUT_DIR"
-
-# 7) Prevent overwrite
-if [ -f "$OUTPUT_FILE" ]; then
-	  echo "Error: $OUTPUT_FILE already exists."
-	    exit 1
-fi
-
-# 8) Fill in placeholders and write out the new post
-sed \
-	  -e "s/{{title}}/$DAYS_SINCE/" \
-	    -e "s/{{date}}/$TODAY/" \
-	      "$TEMPLATE_PATH" > "$OUTPUT_FILE"
-
-# 9) Open it in Vim
+# 7) Open in Vim
 vim "$OUTPUT_FILE"
 
