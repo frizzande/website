@@ -4,7 +4,6 @@ date: "2025-08-25"
 tags: ["training", "breathing"]
 categories: [""]
 author: "ande"
-draft: true
 ---
 
 Sunday last week, I got on the wrong train going to visit my old housemates, and I ended up in **Revesby**.  
