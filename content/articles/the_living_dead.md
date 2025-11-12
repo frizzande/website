@@ -4,7 +4,6 @@ date: "2017-06-16"
 tags: ["cancer"]
 categories: ["cancer"]
 author: "ande"
-draft: true
 ---
 
 I don't remember when I wrote this piece. It came from a dark place, twelve levels underwater, with no light coming through.
@@ -35,7 +34,7 @@ I'm afraid of dying. We all are, I think. Maybe you can get to death without con
 
 Don't go back to the carpet store. That's the only rule.
 
-We're all dead. MY life is diseased, and it's lethal. I am afraid to die as I have been living.
+We're all dead. My life is diseased, and it's lethal. I am afraid to die as I have been living.
 
 I don't think life has any inherent value. I don't think my life has any inherent value. I avoid. I avoid the panic, I avoid the sadness that my life might always be filled with panic, the depression, the sadness, the tears. I avoid eating, showering, dressing, moving. This is my life without connection. My most basic connection - to myself - has frayed; it's barely a tatter. The things I want to be able to do - to talk, to learn, to move, to share - depend upon connections; my connections.
 
