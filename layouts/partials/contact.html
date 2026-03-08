@@ -1,0 +1,45 @@
+<section class="contact mt-12 p-6 bg-gray-50 max-w-xl mx-auto rounded-lg">
+
+  <h2 class="text-xl font-semibold mb-4">reach out</h2>
+
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+
+    <!-- spam trap -->
+    <input type="text" name="_gotcha" class="hidden">
+
+    <!-- Name -->
+    <label class="block">
+      <span class="text-sm font-medium text-gray-700">name</span>
+      <input type="text" name="name" required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-purple-400">
+    </label>
+
+    <!-- Email -->
+    <label class="block">
+      <span class="text-sm font-medium text-gray-700">email</span>
+      <input type="email" name="email" required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-purple-400">
+    </label>
+
+    <!-- Message -->
+    <label class="block">
+      <span class="text-sm font-medium text-gray-700">message</span>
+      <textarea name="message" rows="5" required
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-1 focus:ring-purple-400 resize-y"></textarea>
+    </label>
+
+    <!-- Subscribe checkbox -->
+    <label class="flex items-center gap-2 text-gray-700">
+      <input type="checkbox" name="subscribe" value="yes" class="form-checkbox h-4 w-4 text-purple-500">
+      mailing list invitation
+    </label>
+
+    <!-- Submit button -->
+    <button type="submit"
+      class="mt-2 px-4 py-2 bg-white border border-gray-800 rounded hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-400">
+      send
+    </button>
+
+  </form>
+
+</section>

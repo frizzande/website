@@ -13,6 +13,7 @@ languageCode = "en-au"
 title = "frizzande"
 timeZone = "Australia/Sydney"
 
+enableEmoji = "true"
 googleAnalytics = "UA-PROPERTY_ID"
 
 publishDir = "public"
@@ -64,7 +65,7 @@ publishDir = "public"
 #   weight = 3
 [[menu.social]]
   name = 'Instagram'
-  url = 'https://instagram.com/frizzande'
+  url = 'https://instagram.com/frizz.ande'
   weight = 4
 #[[menu.social]]
 #  name = 'Dribbble'
@@ -80,7 +81,7 @@ publishDir = "public"
 #  weight = 7
 [[menu.social]]
   name = 'Email'
-  url = 'mailto:frizzande@gmail.com'
+  url = 'mailto:ciao@frizzande.io'
   weight = 8
 #[[menu.social]]
 #  name = 'RSS'
