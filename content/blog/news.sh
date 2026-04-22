@@ -4,7 +4,7 @@
 # news.sh
 #
 # - Creates a new blog post using archetypes/blog.md
-# - Title is the number of days since 1991-06-26
+# - Title is the number of days since 1991-06-25
 # - Date is today's date (YYYY-MM-DD)
 # - Sets draft: true by default if missing
 # - Sets publishDate to today (appears directly below date)
@@ -14,7 +14,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
-BASE_DATE="1991-06-26"
+BASE_DATE="1991-06-25"
 TODAY=$(date +%Y-%m-%d)
 DAYS_SINCE=$(( ( $(date -d "$TODAY" +%s) - $(date -d "$BASE_DATE" +%s) ) / 86400 ))
 
