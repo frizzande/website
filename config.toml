@@ -25,9 +25,10 @@ publishDir = "public"
 
 [Params.contact]
   email = "ciao@frizzande.io"
-  # Set once the /api/contact route ships on the coffee app; until then the
-  # contact shortcode degrades to a plain mailto link rather than a dead form.
-  endpoint = ""
+  # Served by the coffee app (src/app/api/contact/route.ts on the host), which
+  # mails OWNER_NOTIFY_EMAIL via the shared outbox. Blank this to fall back to
+  # a plain mailto link.
+  endpoint = "https://coffee.frizzande.io/api/contact"
 
 [Params.newsletter]
   provider = "buttondown"
