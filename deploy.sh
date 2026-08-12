@@ -10,6 +10,10 @@
 #   ./deploy.sh --dry-run    show what would change, transfer nothing
 #   ./deploy.sh --yes        don't prompt (for non-interactive use)
 #
+# Drafts are published by default: most posts under content/ carry
+# draft: true while being live and linked, so building without them would
+# unpublish about half the site. Set DRAFTS=0 to honour the flag instead.
+#
 set -euo pipefail
 
 HOST="${DEPLOY_HOST:-ande@frizzande.io}"
@@ -17,6 +21,7 @@ REMOTE="${DEPLOY_PATH:-/var/www/frizzande.io/public/}"
 # Floor for "the build looks sane". A near-empty public/ plus --delete would
 # otherwise wipe the live site.
 MIN_PAGES="${MIN_PAGES:-30}"
+DRAFTS="${DRAFTS:-1}"
 
 DRY_RUN=0
 ASSUME_YES=0
@@ -35,7 +40,11 @@ cd "$(dirname "$0")"
 # classes. Always regenerate before Hugo runs.
 npm run build:css
 rm -rf public
-hugo
+if [[ "$DRAFTS" == "1" ]]; then
+  hugo --buildDrafts
+else
+  hugo
+fi
 
 # --- verify the build before letting rsync --delete near the live site ------
 [[ -f public/index.html ]] || { echo "public/index.html missing — refusing to deploy" >&2; exit 1; }
