@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Regenerate the Tailwind stylesheet so newly-used utility classes exist.
+# Skipping this leaves static/css/main.css stale and silently unstyles new markup.
+npm run build:css || { echo "Tailwind build failed"; exit 1; }
+
 # Build the Hugo site
 hugo || { echo "Hugo build failed"; exit 1; }
 
