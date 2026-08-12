@@ -1,0 +1,24 @@
+{{- with .Site.Menus.apps }}
+<header
+  class="site-header flex-shrink-0 z-30 flex items-center justify-between gap-4 h-11 px-3 md:px-4 bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+
+  <a href="{{ $.Site.BaseURL }}" class="text-sm font-bold truncate hover:opacity-70">
+    {{ $.Site.Title }}
+  </a>
+
+  <nav aria-label="Sibling sites">
+    <ul class="list-none flex items-center gap-1">
+      {{- range . }}
+      <li>
+        <a class="px-2 py-1 rounded-md text-sm flex items-center gap-1 hover:bg-slate-200 dark:hover:bg-slate-700"
+          href="{{ .URL }}" target="_blank" rel="noopener noreferrer">
+          <span>{{ .Name }}</span>
+          {{- partial "icon/externalIcon.html" . -}}
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+  </nav>
+
+</header>
+{{- end }}

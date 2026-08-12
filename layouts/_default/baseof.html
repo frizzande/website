@@ -2,11 +2,14 @@
 <html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
 {{- partial "head.html" . -}}
 
-<body class="flex relative h-full min-h-screen">
-  {{- partial "sidebar.html" . -}}
-  <!-- <div class="flex-1 max-w-full"> -->
+<body class="flex flex-col h-screen">
+  {{- partial "header.html" . -}}
+  <!-- min-h-0 lets the row shrink below content height so <main> keeps its own
+       scrollbar and the header stays put instead of scrolling away. -->
+  <div class="flex flex-1 min-h-0 relative">
+    {{- partial "sidebar.html" . -}}
     {{- block "main" . }}{{- end }}
-  <!-- </div> -->
+  </div>
   {{- partial "footer.html" . -}}
 </body>
 

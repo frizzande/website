@@ -37,6 +37,16 @@ publishDir = "public"
   description = "thoughts in words"
 
 [menu]
+# Sibling apps, surfaced in the persistent site header.
+[[menu.apps]]
+  name = 'coffee'
+  url = 'https://coffee.frizzande.io'
+  weight = 1
+[[menu.apps]]
+  name = 'coach'
+  url = 'https://coach.frizzande.io'
+  weight = 2
+
 [[menu.main]]
   name = 'home'
   url = '/'
