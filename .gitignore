@@ -6,3 +6,9 @@
 /exampleSite/hugo_stats.json
 .DS_Store
 public/
+
+# LaTeX build artifacts — regenerated on every run, pure diff noise
+*.aux
+*.log
+*.out
+*.toc
