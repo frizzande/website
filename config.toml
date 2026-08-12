@@ -23,6 +23,12 @@ publishDir = "public"
 #  images = ['/digital-garden-logo.png']
   enableSearch = true
 
+[Params.contact]
+  email = "ciao@frizzande.io"
+  # Set once the /api/contact route ships on the coffee app; until then the
+  # contact shortcode degrades to a plain mailto link rather than a dead form.
+  endpoint = ""
+
 [Params.newsletter]
   provider = "buttondown"
   path = "frizz.ande"
