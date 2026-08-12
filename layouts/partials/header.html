@@ -2,9 +2,15 @@
 <header
   class="site-header flex-shrink-0 z-30 flex items-center justify-between gap-4 h-11 px-3 md:px-4 bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
 
-  <a href="{{ $.Site.BaseURL }}" class="text-sm font-bold truncate hover:opacity-70">
-    {{ $.Site.Title }}
-  </a>
+  <div class="flex items-center gap-2 min-w-0">
+    <button aria-label="Toggle dark mode"
+      class="dark-mode-toggle p-1 rounded border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 flex-shrink-0">
+      {{- partial "icon/sunIcon.html" . -}}
+    </button>
+    <a href="{{ $.Site.BaseURL }}" class="text-sm font-bold truncate hover:opacity-70">
+      {{ $.Site.Title }}
+    </a>
+  </div>
 
   <nav aria-label="Sibling sites">
     <ul class="list-none flex items-center gap-1">
